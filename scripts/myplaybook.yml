@@ -1,0 +1,16 @@
+- name: Playbook that sends HTTP GET to target URI
+  hosts: localhost
+
+  vars:
+    urltolookup: "http://api.open-notify.org/astros.json"
+
+  tasks:
+  - name: get json file
+    uri:
+      url:  "http://api.open-notify.org/astros.json"
+      method: GET
+    register: this
+
+  - name: Print out the 'results'
+    debug:
+      var: this
